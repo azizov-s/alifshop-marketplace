@@ -55,7 +55,6 @@ const Layout = () => {
   //   console.log(e.target);
   //   console.log(specialDiv.current);
   // }
-  console.log(localStorage.getItem('myCity'));
 
   return (
     <div>

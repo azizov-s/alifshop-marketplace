@@ -72,7 +72,7 @@ const Home = () => {
 
     <div>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Oбогреватели <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Oбогреватели <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -127,7 +127,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Водонагреватели <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Водонагреватели <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -184,7 +184,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Погрузитесь в кино <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Погрузитесь в кино <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -240,7 +240,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Книжное путешествие <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Книжное путешествие <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -296,7 +296,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Ноутбуки для работы и учёбы <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Ноутбуки для работы и учёбы <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -353,7 +353,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Холодильники <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Холодильники <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -409,7 +409,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Облегчите жизнь <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Облегчите жизнь <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -465,7 +465,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Стиральные машины <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Стиральные машины <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -521,7 +521,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Строительные инструменты <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Строительные инструменты <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -578,7 +578,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Без смартфона ни дня <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Без смартфона ни дня <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -634,7 +634,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'>Умные гаджеты <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'>Умные гаджеты <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 
@@ -691,7 +691,7 @@ const Home = () => {
 
     <div className='pt-[100px]'>
       <div className='ml-[100px]'>
-          <p className='text-[30px] font-bold'> Аудио погружение <spam className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</spam></p>
+          <p className='text-[30px] font-bold'> Аудио погружение <span className='ml-[20px] text-[18px] text-[#0075CC] font-normal'>Смотреть все</span></p>
       </div>
     </div>
 

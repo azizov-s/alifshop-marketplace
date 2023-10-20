@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProductEdit = () => {
   return (
-    <div className='ml-[250px] flex flex-wrap justify-between content-start font-mono text-gray-500 px-[100px] pt-[50px] pb-[100px]'>
+    <div className='ml-[250px] flex flex-wrap justify-between content-start text-gray-500 px-[100px] pt-[50px] pb-[100px]'>
       <div className="w-[550px] flex flex-wrap justify-center content-start">
         <div className="w-[550px] flex justify-between items-center">
           <p className='text-[25px] text-[black] font-bold'>Edit Product</p>

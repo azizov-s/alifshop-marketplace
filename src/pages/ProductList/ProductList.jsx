@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import img from '../../assets/iconAlif.png'
+import { axiosRequest } from '../../utils/axiosRequest';
 
 const ProductList = () => {
   const arr = [
@@ -34,9 +35,23 @@ const ProductList = () => {
       price: "149",
     }
   ] 
+  const [products, setProducts] = useState([]) 
+
+  // get Products
+  async function getProducts(){
+    try {
+      const {data} = await axiosRequest.get(`Product/get-products`)
+      setProducts(data.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(()=>{
+    getProducts()
+  },[])
 
   return (
-    <div className='ml-[250px] h-[100vh] font-mono text-gray-500 px-[100px] pt-[50px]'>
+    <div className='ml-[250px] h-[100vh] text-gray-500 px-[100px] pt-[50px]'>
       <div className="w-[100%] flex justify-between items-center">
         <p className='text-[25px] text-[black] font-bold'>Products</p>
         <div className="w flex">
@@ -66,20 +81,24 @@ const ProductList = () => {
           <div className="w-[15%]"></div>
         </div>
         {
-          arr?.map(e => {
+          products?.map(e => {
             return(
               <div key={e.id} className="w-[100%] py-[15px] flex justify-between items-center border-b-[2px] text-[gray] font-bold border-b-gray-400">
                 <div className="w-[30%] pl-[20px] flex justify-start items-center">
                   <div className="w-[30px] h-[30px] mr-[20px] rounded-[5px] bg-gray-400 overflow-hidden">
+                    {/* {!e.image? */}
                     <img src={img} className='h-[30px] object-cover' alt="" />
+                    {/* : */}
+                    {/* // <img src={`${import.meta.env.VITE_APP_FILES_URL}${e.image}`} alt="" /> */}
+                    {/* } */}
                   </div>
-                  <p>{e.name}</p>
+                  <p>{e.productName}</p>
                 </div>
                 <div className="w-[20%] pl-[20px]">
-                  <p>{e.category}</p>
+                  <p>example</p>
                 </div>
                 <div className="w-[20%] pl-[20px]">
-                  <p style={{color:e.status=="In Stock"?"green":e.status=="Limited"?"brown":"red"}}>{e.status}</p>
+                  <p>status</p>
                 </div>
                 <div className="w-[15%] pl-[20px]">
                   <p>{e.price} $</p>

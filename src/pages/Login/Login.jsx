@@ -19,9 +19,9 @@ const Login = () => {
   const [show, setShow] = useState(false)
 
   async function getLogin(){
-    if(localStorage.getItem('access_token')){
-      navigate("/admin/productList")
-    }else{
+    // if(admin && password && localStorage.getItem("access_token")){
+    //   navigate("/admin/productList")
+    // }else{
       try {
         let formData = new FormData()
         formData.append("UserName", admin)
@@ -32,7 +32,7 @@ const Login = () => {
       } catch (error) {
         
       }
-    }
+    // }
   }
 
   return (

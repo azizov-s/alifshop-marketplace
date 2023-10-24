@@ -8,6 +8,7 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import Badge from '@mui/material/Badge';
 
 import '../App.css'
 import { ArrowDownwardSharp, PhoneForwardedRounded } from '@mui/icons-material';
@@ -103,13 +104,18 @@ const Layout = () => {
                 }
             </div>
             <Link to='/karzina'>
-              <button className='w-[30px] h-[30px]'>
+              {/* <button className='w-[30px] h-[30px]'>
                 <ShoppingCartOutlinedIcon style={{fontSize:"25px"}}/>
-              </button>
+              </button> */}
+              <button className='w-[30px] h-[30px]'>
+                <Badge badgeContent={4} color="error">  
+                  <ShoppingCartOutlinedIcon style={{fontSize:"25px", color:"black"}} color="action" />
+                </Badge>
+              </button>  
             </Link>
             <Link to="/admin">
               <button className='w-[30px] h-[30px]'>
-                <AdminPanelSettingsOutlinedIcon style={{fontSize:"25px"}}/>
+                <AdminPanelSettingsOutlinedIcon style={{fontSize:"25px",}}/>
               </button>
             </Link>
             <button onClick={()=>setModalCity(true)} className='w-[115px] h-[48px] flex justify-evenly items-center hover:text-[#ffbe1f]'>

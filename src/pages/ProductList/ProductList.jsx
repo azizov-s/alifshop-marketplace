@@ -86,11 +86,11 @@ const ProductList = () => {
               <div key={e.id} className="w-[100%] py-[15px] flex justify-between items-center border-b-[2px] text-[gray] font-bold border-b-gray-400">
                 <div className="w-[30%] pl-[20px] flex justify-start items-center">
                   <div className="w-[30px] h-[30px] mr-[20px] rounded-[5px] bg-gray-400 overflow-hidden">
-                    {/* {!e.image? */}
+                    {!e.image?
                     <img src={img} className='h-[30px] object-cover' alt="" />
-                    {/* : */}
-                    {/* // <img src={`${import.meta.env.VITE_APP_FILES_URL}${e.image}`} alt="" /> */}
-                    {/* } */}
+                    :
+                    <img src={`${import.meta.env.VITE_APP_FILES_URL}${e?.image}`} alt="" />
+                    }
                   </div>
                   <p>{e.productName}</p>
                 </div>

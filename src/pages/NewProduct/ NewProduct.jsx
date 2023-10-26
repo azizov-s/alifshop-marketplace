@@ -77,7 +77,7 @@ const  NewProduct = () => {
       formData.append("SubCategoryId", +event.target["subCategory"].value)
       formData.append("BrandId", +event.target["brand"].value)
       formData.append("ColorId", +event.target["color"].value)
-      image.map((e)=> {
+      image?.map((e)=> {
         formData.append("Images", e)
         return e
       })
@@ -123,17 +123,17 @@ const  NewProduct = () => {
         </div>
         <div className="w-[550px] mt-[30px]">
           <p className='text-[15px] mb-[5px]'>Название продукта</p>
-          <input name='name' type="text" className='w-[550px] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+          <input name='name' type="text" className='w-[550px] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
           placeholder='Название'/>
         </div>
         <div className="w-[550px] mt-[30px]">
           <p className='text-[15px] mb-[5px]'>Код</p>
-          <input name='code' type="text" className='w-[550px] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+          <input name='code' type="text" className='w-[550px] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
           placeholder='Код'/>
         </div>
         <div className="w-[550px] mt-[30px]">
           <p className='text-[15px] mb-[5px]'>Описание продукта</p>
-          <textarea name='description' type="text" className='w-[550px] h-[150px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px] pt-[7px]'
+          <textarea name='description' type="text" className='w-[550px] h-[150px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px] pt-[5px]'
           placeholder='Описание'/>
         </div>
 
@@ -145,12 +145,12 @@ const  NewProduct = () => {
         <div className="w-[550px] flex flex-wrap justify-between content-start">
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Масса</p>
-            <input type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <input type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='0'/>
           </div>
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Размер</p>
-            <input type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <input type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='0'/>
           </div>
         </div> */}
@@ -162,23 +162,23 @@ const  NewProduct = () => {
         </div>
         <div className="w-[550px] flex flex-wrap justify-between content-start">
           <div className="w-[250px] mt-[30px]">
-            <p className='text-[15px] mb-[5px]'>Количество</p>
-            <input name='quantity' type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
-            placeholder='0'/>
+            <p className='text-[15px] mb-[5px]'>Цена</p>
+            <input name='price' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            placeholder='c. 0'/>
           </div>
           <div className="w-[250px] mt-[30px]">
-            <p className='text-[15px] mb-[5px]'>Цена</p>
-            <input name='price' type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
-            placeholder='c. 0'/>
+            <p className='text-[15px] mb-[5px]'>Количество</p>
+            <input name='quantity' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            placeholder='0'/>
           </div>
           {/* <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Bulk Discount Price</p>
-            <input type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <input type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='0'/>
           </div> */}
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Скидка в процентах (%)</p>
-            <input name='discountPrice' type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <input name='discountPrice' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='% 0'/>
           </div>
         </div>
@@ -190,7 +190,7 @@ const  NewProduct = () => {
         <div className="w-[550px] flex flex-wrap justify-between content-start">
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Подкатегория</p>
-            <select name='subCategory' type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <select name='subCategory' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='Select...'>
               {
                 subCategory?.map((e, i)=>{
@@ -205,12 +205,12 @@ const  NewProduct = () => {
           </div>
           {/* <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Tags</p>
-            <select type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <select type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='Select...'></select>
           </div> */}
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Бренд</p>
-            <select name='brand' type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <select name='brand' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='Select...'>
               {
                 brand?.map((e)=>{
@@ -225,7 +225,7 @@ const  NewProduct = () => {
           </div>
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Цвета</p>
-            <select name='color' type="text" className='w-[100%] h-[35px] mr-[10px] bg-[#efefef] rounded-[5px] outline-none border-[2px] border-gray-500 px-[12px]'
+            <select name='color' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='Select...'>
               {
                 color?.map((e)=>{

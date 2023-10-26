@@ -40,7 +40,7 @@ const Login = () => {
       <div className="w-[100%] h-[100%] flex justify-center items-center">
         <div>
           <div className="w-[360px] h-[450px] bg-[white] rounded-[5px]">
-            <div className='w-[100%] h-[100%] flex flex-wrap justify-center content-evenly'>
+            <div className='w-[100%] h-[100%] flex flex-wrap justify-center content-evenly border-[1px] border-gray-300'>
               <img src={logo} alt="" />
               <p className='w-[300px] text-[25px] font-bold leading-[35px] text-center'>Aдмин Панель</p>
               <input value={admin} onChange={(e)=>setAdmin(e.target.value)} type="text" className='w-[300px] h-[40px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]' placeholder='Логин'/>

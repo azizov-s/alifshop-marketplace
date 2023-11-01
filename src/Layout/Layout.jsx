@@ -142,7 +142,7 @@ const Layout = () => {
                     }
                     let logic = e == localStorage.getItem('myCity')
                   return(
-                      <button onClick={()=>{localStorage.setItem('myCity',e),setModalCity(false)}} style={{backgroundColor:logic?"#ffbe1f":"",hoverBackgroundColor:logic?"#ffd363":""}} className='w-[208px] h-[56px] text-[16px] mb-[12px] rounded-[5px] bg-[#f3f4f5] hover:bg-gray-300'> 
+                      <button onClick={()=>{localStorage.setItem('myCity', e), setModalCity(false)}} style={{backgroundColor:logic?"#ffbe1f":"", hoverBackgroundColor:logic?"#ffd363":""}} className='w-[208px] h-[56px] text-[16px] mb-[12px] rounded-[5px] bg-[#f3f4f5] hover:bg-gray-300'> 
                         <p>{e}</p>
                       </button>
                     )

@@ -46,6 +46,21 @@ const ProductList = () => {
       console.log(error);
     }
   }
+
+  function addProduct(id){
+    if(!localStorage.getItem('product')){
+      localStorage.setItem('product', id)
+    } else
+    if(!localStorage.getItem('product').split(",").find((e)=> e==id.toString())){
+    let thisProducts = localStorage.getItem('product')
+    localStorage.setItem('product',[thisProducts, id])
+    }
+  }
+  function deleteX(id){
+    let thisProducts = localStorage.getItem('product')
+    localStorage.setItem('product', [thisProducts.split(',').filter((e)=> e!=id.toString())])
+  }
+
   useEffect(()=>{
     getProducts()
   },[])
@@ -84,10 +99,10 @@ const ProductList = () => {
           products?.map(e => {
             return(
               <div key={e.id} className="w-[100%] py-[15px] flex justify-between items-center border-b-[2px] text-[gray] font-bold border-b-gray-400">
-                <div className="w-[30%] pl-[20px] flex justify-start items-center">
+                <div onClick={()=>addProduct(e.id)}  className="w-[30%] pl-[20px] flex justify-start items-center">
                   <div className="w-[30px] h-[30px] mr-[20px] rounded-[5px] bg-gray-400 overflow-hidden">
                     {!e.image?
-                    <img src={img} className='h-[30px] object-cover' alt="" />
+                    <img src={img} className='w-[100%] h-[30px] object-cover' alt="" />
                     :
                     <img src={`${import.meta.env.VITE_APP_FILES_URL}${e?.image}`} alt="" />
                     }
@@ -103,7 +118,7 @@ const ProductList = () => {
                 <div className="w-[15%] pl-[20px]">
                   <p>{e.price} $</p>
                 </div>
-                <div className="w-[15%] pl-[20px]">
+                <div onClick={()=>deleteX(e.id)}  className="w-[15%] pl-[20px]">
                   <EditIcon/>
                   <DeleteOutlineOutlinedIcon/>
                 </div>

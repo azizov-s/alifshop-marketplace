@@ -77,6 +77,8 @@ const  NewProduct = () => {
       formData.append("SubCategoryId", +event.target["subCategory"].value)
       formData.append("BrandId", +event.target["brand"].value)
       formData.append("ColorId", +event.target["color"].value)
+      formData.append("Weight", event.target["weight"].value)
+      formData.append("Size", event.target["size"].value)
       image?.map((e)=> {
         formData.append("Images", e)
         return e
@@ -96,10 +98,10 @@ const  NewProduct = () => {
   };
 
   // delete local Image
-  function deleteLocalImage(img){
+  function deleteLocalImage(index){
     // setLocalImage([...localImage.filter((e)=> e!=img)])
-    setLocalImage([])
-    setImage([])
+    setLocalImage(localImage?.filter((e, i)=> i != index))
+    setImage(image?.filter((e, i)=> i != index))
   }
 
   // console.log(image);
@@ -137,7 +139,7 @@ const  NewProduct = () => {
           placeholder='Описание'/>
         </div>
 
-        {/* <div className="w-[550px] h-[1px] my-[40px] bg-gray-500"></div>
+        <div className="w-[550px] h-[1px] my-[40px] bg-gray-500"></div>
         <div className="w-[550px]">
         <p className='text-[18px] text-[black] font-bold'>Дополнительная информация</p>
           <p className='text-[15px] mt-[5px]'>Раздел для настройки дополнительной информации о продукте</p>
@@ -145,15 +147,15 @@ const  NewProduct = () => {
         <div className="w-[550px] flex flex-wrap justify-between content-start">
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Масса</p>
-            <input type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            <input type="text" name='weight' className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='0'/>
           </div>
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Размер</p>
-            <input type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            <input type="text" name='size' className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='0'/>
           </div>
-        </div> */}
+        </div>
 
         <div className="w-[550px] h-[1px] my-[40px] bg-gray-500"></div>
         <div className="w-[550px] mt-[0px]">
@@ -163,7 +165,7 @@ const  NewProduct = () => {
         <div className="w-[550px] flex flex-wrap justify-between content-start">
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Цена</p>
-            <input name='price' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            <input name='price' type="number" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='c. 0'/>
           </div>
           <div className="w-[250px] mt-[30px]">
@@ -202,12 +204,8 @@ const  NewProduct = () => {
                 })
               }
             </select>
+            {/* <input type="text" onClick={()=>setModalSub(true)} className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'/> */}
           </div>
-          {/* <div className="w-[250px] mt-[30px]">
-            <p className='text-[15px] mb-[5px]'>Tags</p>
-            <select type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
-            placeholder='Select...'></select>
-          </div> */}
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Бренд</p>
             <select name='brand' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
@@ -244,7 +242,7 @@ const  NewProduct = () => {
           <button type='submit' className='w-[250px] h-[40px] rounded-[5px] text-[15px] bg-[#ffbe1f] hover:bg-[#ffd363]'><p>Добавить продукт</p></button>
         </div>
       </form>
-      <div className="w-[360px]">
+      <div className="w-[360px] fixed left-[990px]">
         <div className="w-[100%] h-[39px]"></div>
         <div className="w-[100%] mt-[30px]">
           <p className='text-[18px] text-[black] font-bold'>Изображение продукта</p>
@@ -254,7 +252,7 @@ const  NewProduct = () => {
           {
             localImage?.map((e, i)=>{
               return(
-                <div key={i} onClick={()=>deleteLocalImage(e)} className="h-[100px] bg-[white] overflow-hidden rounded-[5px] hover:border-[red] border-gray-300 border-[2px] flex justify-center items-center">
+                <div key={i} onClick={()=>deleteLocalImage(i)} className="h-[100px] bg-[white] overflow-hidden rounded-[5px] hover:border-[red] border-gray-300 border-[2px] flex justify-center items-center">
                   <img src={e} className='h-[100%]' alt="" />
                 </div>  
                 )

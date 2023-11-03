@@ -11,6 +11,8 @@ import {
 import { Close, Upload } from "@mui/icons-material";
 import { fileToBase64 } from '../../utils/fileToBase64';
 import { Navigate, useNavigate } from 'react-router-dom';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const  NewProduct = () => {
   const navigate = useNavigate()
@@ -21,6 +23,16 @@ const  NewProduct = () => {
 
   const [localImage, setLocalImage] = useState([])
   const [image, setImage] = useState([])
+
+  const [modal, setModal] = useState(false)
+  const [valueBrand, setValueBrand] = useState("")
+  const [idBrand, setIdBrand] = useState("")
+  const [searchBrand, setSearchBrand] = useState("")
+
+  const [modalSub, setModalSub] = useState(false)
+  const [valueSub, setValueSub] = useState("")
+  const [idSub, setIdSub] = useState("")
+  const [searchSub, setSearchSub] = useState("")
 
   // get Brands
   async function getBrand(){
@@ -52,6 +64,7 @@ const  NewProduct = () => {
     }
   }
 
+  // add Product
   const handleSubmit = async(event) => {
     event.preventDefault()
     try {
@@ -74,8 +87,10 @@ const  NewProduct = () => {
       formData.append("Quantity", +event.target["quantity"].value)
       formData.append("Price", event.target["price"].value)
       formData.append("DiscountPrice", event.target["discountPrice"].value)
-      formData.append("SubCategoryId", +event.target["subCategory"].value)
-      formData.append("BrandId", +event.target["brand"].value)
+      formData.append("SubCategoryId", +idSub)
+      // formData.append("SubCategoryId", +event.target["subCategory"].value)
+      // formData.append("BrandId", +event.target["brand"].value)
+      formData.append("BrandId", +idBrand)
       formData.append("ColorId", +event.target["color"].value)
       formData.append("Weight", event.target["weight"].value)
       formData.append("Size", event.target["size"].value)
@@ -104,8 +119,32 @@ const  NewProduct = () => {
     setImage(image?.filter((e, i)=> i != index))
   }
 
-  // console.log(image);
-  // console.log(localImage);
+  // open modal Brand & Subcategory
+  function openModal(which = 0){
+    if(which){
+      setModalSub(true)
+    }else{
+      setModal(true)
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  // close modal Brand & Subcategory
+  function closeModal(name, id, which = 0){
+    document.body.style.overflow = 'auto';
+    setModal(false)
+    setModalSub(false)
+    setSearchBrand("")
+    setSearchSub("")
+
+    if(which){
+      setValueSub(name)
+      setIdSub(id)
+    }else{
+      setValueBrand(name)
+      setIdBrand(id)
+    }
+  }
 
   useEffect(()=>{
     getBrand(),
@@ -170,7 +209,7 @@ const  NewProduct = () => {
           </div>
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Количество</p>
-            <input name='quantity' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            <input name='quantity' type="number" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='0'/>
           </div>
           {/* <div className="w-[250px] mt-[30px]">
@@ -179,9 +218,9 @@ const  NewProduct = () => {
             placeholder='0'/>
           </div> */}
           <div className="w-[250px] mt-[30px]">
-            <p className='text-[15px] mb-[5px]'>Скидка в процентах (%)</p>
-            <input name='discountPrice' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
-            placeholder='% 0'/>
+            <p className='text-[15px] mb-[5px]'>Скидка (%)</p>
+            <input name='discountPrice' type="number" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            placeholder='0'/>
           </div>
         </div>
         <div className="w-[550px] h-[1px] my-[40px] bg-gray-500"></div>
@@ -192,7 +231,7 @@ const  NewProduct = () => {
         <div className="w-[550px] flex flex-wrap justify-between content-start">
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Подкатегория</p>
-            <select name='subCategory' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            {/* <select name='subCategory' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='Select...'>
               {
                 subCategory?.map((e, i)=>{
@@ -203,12 +242,13 @@ const  NewProduct = () => {
                   )
                 })
               }
-            </select>
-            {/* <input type="text" onClick={()=>setModalSub(true)} className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'/> */}
+            </select> */}
+            <input value={valueSub} onClick={()=>openModal(1)} name='brand' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            placeholder='Подкатегория'/>
           </div>
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Бренд</p>
-            <select name='brand' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            {/* <select name='brand' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
             placeholder='Select...'>
               {
                 brand?.map((e)=>{
@@ -219,7 +259,9 @@ const  NewProduct = () => {
                   )
                 })
               }
-            </select>
+            </select> */}
+            <input value={valueBrand} onClick={()=>openModal()} name='brand' type="text" className='w-[100%] h-[35px] rounded-[5px] border-[2px] border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            placeholder='Бренд'/>
           </div>
           <div className="w-[250px] mt-[30px]">
             <p className='text-[15px] mb-[5px]'>Цвета</p>
@@ -308,6 +350,68 @@ const  NewProduct = () => {
           </Box>
         </div>
       </div>
+      {
+        modal?
+        <div style={{background:"rgba(0, 0, 0, 0.5)"}} className="w-[100%] h-[100vh] fixed top-0 left-0 flex justify-center items-center">
+          <div className="w-[400px] flex flex-wrap justify-between content-start rounded-[5px] bg-[white] p-[30px]">
+            <div className="w-[100%] mb-[20px] flex justify-between items-center">
+                <p className='text-[20px] font-bold'>Выберите бренд</p>
+                <button onClick={()=>closeModal()} className='text-[gray] hover:text-[#ffbe1f]'>
+                    <CloseOutlinedIcon/>
+                </button>
+            </div>
+            <input onChange={(e)=>setSearchBrand(e.target.value)} value={searchBrand} type="search" className='w-[78%] h-[35px] rounded-l-[5px] border-[2px]  border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            placeholder='Поиск брендов'/>
+            <button className='w-[20%] h-[35px] rounded-r-[5px] border-[2px] border-[#ffbe1f] backgroundX text-[black]'><SearchOutlinedIcon/></button>
+            <div className="w-[100%] max-h-[280px] grid grid-cols-3 grid-rows-auto gap-[5px] overflow-y-auto mt-[20px] text-[black]">
+              {
+                  brand?.
+                  filter((e)=>{
+                    return e?.brandName?.toLowerCase().trim().includes(searchBrand.toLowerCase().trim())?e:!searchBrand?e:""
+                  })
+                  .map((e, i)=>{
+                    return(
+                      <button onClick={()=>closeModal(e?.brandName, e?.id)} key={e?.id} value={e?.id} className="h-[30px] rounded-[5px] flex justify-center items-center bg-gray-200 hover:bg-[#ffbe1f] text-[15px]">
+                        {e?.brandName}
+                      </button>
+                    )
+                  })
+                }
+            </div>
+          </div>
+        </div>:null
+      }
+      {
+        modalSub?
+        <div style={{background:"rgba(0, 0, 0, 0.5)"}} className="w-[100%] h-[100vh] fixed top-0 left-0 flex justify-center items-center">
+          <div className="w-[400px] flex flex-wrap justify-between content-start rounded-[5px] bg-[white] p-[30px]">
+            <div className="w-[100%] mb-[20px] flex justify-between items-center">
+                <p className='text-[20px] font-bold'>Выберите подкатегорию</p>
+                <button onClick={()=>closeModal()} className='text-[gray] hover:text-[#ffbe1f]'>
+                    <CloseOutlinedIcon/>
+                </button>
+            </div>
+            <input onChange={(e)=>setSearchSub(e.target.value)} value={searchSub} type="search" className='w-[78%] h-[35px] rounded-l-[5px] border-[2px]  border-gray-300 hover:border-gray-500 outline-[#ffbe1f] px-[15px]'
+            placeholder='Поиск подкатегории'/>
+            <button className='w-[20%] h-[35px] rounded-r-[5px] border-[2px] border-[#ffbe1f] backgroundX text-[black]'><SearchOutlinedIcon/></button>
+            <div className="w-[100%] max-h-[280px] grid grid-cols-2 grid-rows-auto gap-[5px] overflow-y-auto mt-[20px] text-[black]">
+              {
+                  subCategory?.
+                  filter((e)=>{
+                    return e?.subCategoryName?.toLowerCase().trim().includes(searchSub.toLowerCase().trim())?e:!searchSub?e:""
+                  })
+                  .map((e, i)=>{
+                    return(
+                      <button onClick={()=>closeModal(e?.subCategoryName, e?.id, 1)} key={e?.id} value={e?.id} className="py-[8px] px-[5px] rounded-[5px] flex justify-center items-center bg-gray-200 hover:bg-[#ffbe1f] text-[14px]">
+                        {e?.subCategoryName}
+                      </button>
+                    )
+                  })
+                }
+            </div>
+          </div>
+        </div>:null
+      }
     </div>
   )
 }

@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { axiosRequest } from '../../utils/axiosRequest'
 
 const Popular = ({img, text}) => {
   return (
-    <div>
-      <div className="w-[14%] pb-[20px] text-[gold]">
-        <img src={img} className='m-[auto] w-[60%]' alt="" />
+    <button className='w-[168px] p-[10px] flex flex-wrap justify-center content-start hover:text-[#ffd363]'>
+      <div className="w-[128px] h-[128px] flex justify-center items-center">
+        <img src={img} className='' alt="" />
       </div>
-      <div className="w-[95%] text-center">
-        <p className='font-bold text-center pt-[10px]'>{text}</p>
+      <div className="w-[168px] text-center pt-[10px]">
+        <p className='font-bold text-center text-[16px]'>{text}</p>
       </div>
-    </div>
+    </button>
   )
 }
 

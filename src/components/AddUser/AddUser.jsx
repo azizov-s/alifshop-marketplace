@@ -28,7 +28,7 @@ const AddUser = ({close}) => {
     <div style={{backgroundColor: "rgba(0, 0, 0, 0.5)"}} className="w-[100%] h-[100vh] fixed top-0 flex justify-center items-center">
       <div className="w-[360px] h-[450px] px-[30px] rounded-[5px] bg-[white] p-[30px]">
         <div className="w-[100%] flex justify-between items-center">
-            <p className='text-[20px] font-bold'>Новый админ</p>
+            <p className='text-[20px] font-bold'>Новый пользователь</p>
             <button onClick={close} className='text-[gray] hover:text-[#ffbe1f]'>
                 <CloseOutlinedIcon/>
             </button>

@@ -62,7 +62,7 @@ const Layout = () => {
   return (
     <div>
       <div className="overflow-visible z-10 relative">
-        <div style={{display:location.pathname.includes("admin")?"none":""}} className="w-[100%] fixed top-0 overflow-visible">
+        <div style={{display:location.pathname.includes("admin")?"none":""}} className="w-[100%] fixed top-0 overflow-visible  border-b-[1px] border-b-gray-300">
           <div className="w-[100%] h-[105px] bg-[white] lg:px-[150px] flex justify-between items-center">
             <Link to="/">
                 <img src={logo} className='h-[42px]' alt="" />

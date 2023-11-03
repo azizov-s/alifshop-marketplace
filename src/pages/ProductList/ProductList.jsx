@@ -41,7 +41,7 @@ const ProductList = () => {
   async function getProducts(){
     try {
       const {data} = await axiosRequest.get(`Product/get-products`)
-      setProducts(data.data)
+      setProducts(data.data?.products)
     } catch (error) {
       console.log(error);
     }

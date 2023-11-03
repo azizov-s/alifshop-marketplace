@@ -30,18 +30,20 @@ const admin = () => {
       {
         location.pathname != "/admin"?
         <div className="w-[250px] h-[100vh] fixed border-r-[1px] border-r-gray-300 flex flex-wrap justify-center content-start pb-[50px] text-[15px]">
-          <Link to='/'>
-            <button className='w-[215px] h-[40px] flex justify-start pl-[5px] items-center mb-[20px] mt-[10px] hover:text-gray-500 rounded-[5px]'>
-              {/* <KeyboardBackspaceIcon/>  */}
-              <p className=''>Выйти</p>
-            </button>
-          </Link>
-          {/* <Link to='/admin'>
-            <button className='w-[100px] h-[40px] flex justify-end items-center mb-[20px] mt-[10px] hover:text-gray-500 rounded-[5px]'>
-              <LoginIcon/>
-              <p className='ml-[10px]'>Логин</p>
-            </button>
-          </Link> */}
+          <div className="w-[100%] h-[60px] mb-[20px] flex justify-center items-center border-b-[1px] border-b-gray-300">
+            <Link to='/'>
+              <button className='w-[100px] h-[40px] flex mr-[15px] justify-start items-center hover:text-gray-500 rounded-[5px]'>
+                <p className='ml-[10px]'>Выйти</p>
+                {/* <KeyboardBackspaceIcon/>  */}
+              </button>
+            </Link>
+            <Link to='/admin'>
+              <button className='w-[100px] h-[40px] flex justify-end items-center hover:text-gray-500 rounded-[5px]'>
+                <LoginIcon/>
+                <p className='ml-[10px]'>Логин</p>
+              </button>
+            </Link>
+          </div>
           <div className="w-[215px] mb-[30px] flex justify-start items-center">
             <div className="w-[60px] h-[60px] rounded-[50px] flex justify-center items-center bg-gray-400">
               {
@@ -73,14 +75,14 @@ const admin = () => {
             </button>
           </Link>
 
-          <button onClick={()=>{setColorModal(true)}} className='w-[215px] h-[40px] mt-[30px] bg-gray-100 hover:bg-gray-300 rounded-[5px]'>
-            <p>Цвет</p>
+          <button onClick={()=>{setColorModal(true)}} className='w-[215px] h-[40px] flex justify-start items-center pl-[15px] mt-[30px] mb-[8px] bg-gray-100 hover:bg-gray-300 rounded-[5px]'>
+            <p>Новый цвет</p>
           </button>
-          <button onClick={()=>{setBrandModal(true)}} className='w-[215px] h-[40px] flex justify-evenly items-center mt-[8px]  bg-gray-100 hover:bg-gray-300 rounded-[5px]'>
+          <button onClick={()=>{setBrandModal(true)}} className='w-[215px] h-[40px] flex justify-start items-center pl-[15px] bg-gray-100 hover:bg-gray-300 rounded-[5px]'>
             {/* <AddOutlinedIcon/> */}
-            <p>Бренд</p>
+            <p>Новый бренд</p>
           </button>
-          <button onClick={()=>(setUserModal(true))} className='w-[215px] h-[40px] flex justify-start items-center pl-[15px] mt-[60px] mb-[8px] bg-gray-100 hover:bg-gray-300 rounded-[5px]'>
+          <button onClick={()=>(setUserModal(true))} className='w-[215px] h-[40px] flex justify-start items-center pl-[15px] mt-[30px] mb-[8px] bg-gray-100 hover:bg-gray-300 rounded-[5px]'>
               <p>Новый пользователь</p>
           </button>
         </div>:null

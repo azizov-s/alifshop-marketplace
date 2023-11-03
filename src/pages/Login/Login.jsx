@@ -13,8 +13,8 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 const Login = () => {
   const navigate = useNavigate()
 
-  const [admin, setAdmin] = useState("")
-  const [password, setPassword] = useState("")
+  const [admin, setAdmin] = useState("admin")
+  const [password, setPassword] = useState("hello123")
 
   const [show, setShow] = useState(false)
 

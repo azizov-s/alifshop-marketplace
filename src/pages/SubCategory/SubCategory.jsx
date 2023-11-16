@@ -16,41 +16,59 @@ const Category = () => {
 
   const [sub, setSub] = useState([])
   const [categoryName, setCategoryName] = useState('')
+  const [subName, setSubName] = useState('')
 
   const [products, setProducts] = useState([])
 
   async function getSubcategory(id) {
     try {
-      const {data} = await axiosRequest.get(`/Category/get-category-by-id?id=${id}`)
-      setSub(data.data?.subCategories)
-      setCategoryName(data.data?.categoryName)
+      const {data} = await axiosRequest.get(`SubCategory/get-sub-category-by-id?id=${id}`)
+      setSubName(data.data?.subCategoryName)
     } catch (error) {
       
     }
   }
 
+  async function getName() {
+    if (localStorage.getItem('categoryID')) {
+        try {
+        const {data} = await axiosRequest.get(`Category/get-category-by-id?id=${+localStorage.getItem('categoryID')}`)
+            setCategoryName(data.data?.categoryName)
+        } catch (error) {
+        
+        }
+    }
+  }
+
   async function getProducts(id) {
     try {
-      const {data} = await axiosRequest.get(`/Product/get-products?CategoryId=${id}`)
+      const {data} = await axiosRequest.get(`Product/get-products?SubcategoryId=${id}`)
       setProducts(data.data?.products)
     } catch (error) {
       
     }
   }
 
+  function letToCategory() {
+    if (localStorage.getItem('categoryID')) {
+        navigate(`/category/${+localStorage.getItem('categoryID')}`)
+    } 
+  }
+
   useEffect(() => {
     setProducts([])
     getSubcategory(id)
     getProducts(id)
+    getName()
   }, [id])
   
 
   return (
     <div className='pt-[125px] pb-[40px] px-[150px]'>
-      <p className='w-[100%] text-[14px] text-gray-300'><span onClick={() => navigate('/')} className='text-[#3e75a8] cursor-pointer hover:text-[#ffbe1f]'>Каталог товаров</span> / <span className='text-[#3e75a8] cursor-pointer hover:text-[#ffbe1f]'> {categoryName}</span></p>
+      <p className='w-[100%] text-[14px] text-gray-300'><span onClick={() => navigate('/')} className='text-[#3e75a8] cursor-pointer hover:text-[#ffbe1f]'>Каталог товаров</span> / <span onClick={() => letToCategory()} className='text-[#3e75a8] cursor-pointer hover:text-[#ffbe1f]'> {categoryName}</span> / <span className='text-[#3e75a8] cursor-pointer hover:text-[#ffbe1f]'> {subName}</span></p>
       <div className="w-[100%] my-[30px] flex justify-between items-center">
         <div className="w flex items-end">
-          <h1 className='text-[32px] font-bold text-[#222222] leading-[32px]'>{categoryName}</h1>
+          <h1 className='text-[32px] font-bold text-[#222222] leading-[32px]'>{subName}</h1>
           <p className='text-gray-500 text-[16px] ml-[15px]'>{products?.length} товаров</p>
         </div>
         <div className="w flex items-center text-[14px]">
@@ -64,13 +82,6 @@ const Category = () => {
         </div>
       </div>
       <div className="w mb-[30px]">
-          {
-            sub?.map((e, i)=>{
-              return (
-                <button onClick={() => navigate(`/subcategory/${e?.id}`)} key={i} className='px-[20px] h-[40px] rounded-[20px] bg-[#f3f4f5] hover:bg-gray-300 text-[16px] mr-[5px] mb-[10px]'><p>{e?.subCategoryName}</p></button>
-              )
-            })
-          }
       </div>
       <div className="w flex  justify-between border-b-[1px] border-b-gray-400">
         <div className="w-[200px] flex flex-wrap justify-start content-start pr-[5px] overflow-y-scrol">

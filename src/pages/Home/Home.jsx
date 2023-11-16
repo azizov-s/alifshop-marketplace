@@ -50,10 +50,11 @@ const Home = () => {
   // get Products
   async function getProducts(id){
     try {
-      const {data} = await axiosRequest.get(`Product/get-products?SubcategoryId=${id}`)
-      if(id == 4){
+      const {data} = await axiosRequest.get(`Product/get-products`)
+      // ?SubcategoryId=${id}
+      // if(id == 4){
         setXiaomi(data.data?.products)
-      }
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -118,8 +119,8 @@ const Home = () => {
           {
             xiaomi?.map((e)=>{
               return (
-                <SwiperSlide>
-                  <ProductCard2 img={obogrevatel} text1="690C" text2="37c. x 24мес" text3="Электрический обогреватель Winning Star St-4081 , чёрный"/>
+                <SwiperSlide key={e?.id}>
+                  <ProductCard2 id={e?.id} productName={e?.productName} image={e?.image} price={e?.price} discountPrice={e?.discountPrice} />
                 </SwiperSlide>
               )
             })

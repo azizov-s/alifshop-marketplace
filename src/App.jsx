@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Loader from './components/Loader/Loader'
-import { Home, Layout, Login, Product, Admin, Catalogy, ProductList, ProductEdit, NewProduct, Category, Karzina } from './router/Router'
+import { Home, Layout, Login, Product, Admin, Catalogy, ProductList, ProductEdit, NewProduct, Category, Karzina, SubCategory } from './router/Router'
 import './App.css'
 
 const App = () => {
@@ -72,10 +72,17 @@ const App = () => {
           </Suspense>
         },
         {
-          path: '/category',
+          path: '/category/:id',
           element: 
           <Suspense fallback={<Loader/>}>
             <Category/>
+          </Suspense>
+        },
+        {
+          path: '/subcategory/:id',
+          element: 
+          <Suspense fallback={<Loader/>}>
+            <SubCategory/>
           </Suspense>
         },
         {

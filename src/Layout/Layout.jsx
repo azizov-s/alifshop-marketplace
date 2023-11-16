@@ -59,6 +59,11 @@ const Layout = () => {
   //   console.log(specialDiv.current);
   // }
 
+  // close
+  const close  = () => {
+    setModalCategory(false)
+  }
+
   return (
     <div>
       <div className="overflow-visible z-10 relative">
@@ -122,7 +127,7 @@ const Layout = () => {
           </div>
           {
             modalCategory?
-            <ModalCategory/>:null
+            <ModalCategory close = {close}/>:null
           }
         </div>
         { 

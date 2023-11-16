@@ -2,23 +2,46 @@ import React, { useEffect, useState } from 'react'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import axios from 'axios';
 import { axiosRequest } from '../../utils/axiosRequest';
+import { useNavigate } from 'react-router-dom';
 
-function ModalCategory() {
+function ModalCategory({close}) {
     const [catalogy, setCatalogy] = useState([])
     const [subCategories, setSubCategories] = useState(1)
+    const navigate = useNavigate()
 
     // get Catalogy
-    async function getCatalogy(){
+    async function getCategory(){
         try {
-            const {data} = await axiosRequest.get(`Catalog/get-catalogs`)
-            setCatalogy(data.data[0].categories)
+            const {data} = await axiosRequest.get(`Category/get-categories`)
+            setCatalogy(data.data)
         } catch (error) {
             
         }
     }
 
+    // navigate and save
+    function save(id, variant = 0) {
+        if (!variant) {
+            navigate(`/category/${id}`)     
+        } else {
+            navigate(`/subcategory/${id}`)
+        }
+        close()
+        localStorage.setItem('categoryID', id)        
+    }
+
+    function save(id, variant = 0) {
+        if (!variant) {
+            navigate(`/category/${id}`)     
+        } else {
+            navigate(`/subcategory/${variant}`)
+        }
+        close()
+        localStorage.setItem('categoryID', id)        
+    }
+
     useEffect(()=>{
-        getCatalogy()
+        getCategory()
     }, [])
 
     return (
@@ -32,8 +55,9 @@ function ModalCategory() {
                                 let logic = e.id == subCategories
                                 return(
                                     <button 
-                                    style={{backgroundColor:logic?"white":"",color:logic?"#ffbe1f":""}} 
+                                    style={{backgroundColor:logic?"white":"", color:logic?"#ffbe1f":""}} 
                                     key={e?.id} onMouseOver={()=>setSubCategories(e?.id)} 
+                                    onClick={()=> save(e?.id)}
                                     className="w-[245px] h-[45px] mb-[5px] rounded-[5px] flex justify-start items-center pl-[15px] hover:bg-[white] hover:text-[#ffbe1f]">
                                     <p>{e?.categoryName}</p>
                                     </button>
@@ -50,7 +74,7 @@ function ModalCategory() {
                                 map((e,i)=>{
                                     return(
                                     <div key={i} className="w-[260px] min-h-[96px] flex justify-start items-start">
-                                        <h1 className='cursor-pointer font-bold colorHover'>{e?.subCategoryName}</h1>
+                                        <h1 onClick={()=>save(subCategories, e?.id)} className='cursor-pointer font-bold colorHover'>{e?.subCategoryName}</h1>
                                     </div>
                                     )
                                 })
